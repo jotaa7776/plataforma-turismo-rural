@@ -6,8 +6,8 @@ Plataforma web para emprendimientos de turismo rural y comunitario.
 - Benjamín Villarroel Valenzuela
 - Frank Häfelin Aldunate
 
-Arquitectura:
-MVP
+## 2.Arquitectura:
+-MVP
 
 Tecnologías:
 HTML
