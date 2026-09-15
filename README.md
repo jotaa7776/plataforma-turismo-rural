@@ -7,15 +7,15 @@ Plataforma web para emprendimientos de turismo rural y comunitario.
 - Frank Häfelin Aldunate
 
 ## 2.Arquitectura:
--MVP
+- MVP
 
-Tecnologías:
+## 3.Tecnologías:
 HTML
 CSS
 JAVASCRIPT
 REACT (por decidir)
 
-Organización:
+## 4.Organización:
 docs: Carpeta para la documentación del proyecto
 src: Carpeta donde se almacenará el código fuente
 test: Carpeta para la realización de pruebas
