@@ -19,3 +19,6 @@ Plataforma web para emprendimientos de turismo rural y comunitario.
 - docs: Carpeta para la documentación del proyecto
 - src: Carpeta donde se almacenará el código fuente
 - test: Carpeta para la realización de pruebas
+
+## 5.
+- /proyecto│├── README.md├── .gitignore├── docs/├── src/└── tests/
