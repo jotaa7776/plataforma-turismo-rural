@@ -10,12 +10,12 @@ Plataforma web para emprendimientos de turismo rural y comunitario.
 - MVP
 
 ## 3.Tecnologías:
-HTML
-CSS
-JAVASCRIPT
-REACT (por decidir)
+- HTML
+- CSS
+- JAVASCRIPT
+- REACT (por decidir)
 
 ## 4.Organización:
-docs: Carpeta para la documentación del proyecto
-src: Carpeta donde se almacenará el código fuente
-test: Carpeta para la realización de pruebas
+- docs: Carpeta para la documentación del proyecto
+- src: Carpeta donde se almacenará el código fuente
+- test: Carpeta para la realización de pruebas
