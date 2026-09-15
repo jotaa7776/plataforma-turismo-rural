@@ -1,5 +1,12 @@
-# Crear carpetas de arquitectura
-mkdir docs src tests
+# Dependencias y entornos
+node_modules/
+venv/
+.env
 
-# Crear un archivo de exclusión estándar (.gitignore)
-touch .gitignore
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
