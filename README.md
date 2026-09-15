@@ -1,10 +1,10 @@
 # plataforma-turismo-rural
 Plataforma web para emprendimientos de turismo rural y comunitario.
 
-##Integrantes:
-Joaquín Navarro
-Benjamín Villarroel
-Frank Häfelin
+## 1. Integrantes del Equipo
+- Joaquín Esteban Navarro Álvarez
+- Benjamín Villarroel Valenzuela
+- Frank Häfelin Aldunate
 
 Arquitectura:
 MVP
