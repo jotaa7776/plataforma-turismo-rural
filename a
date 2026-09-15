@@ -1,0 +1,5 @@
+# Crear carpetas de arquitectura
+mkdir docs src tests
+
+# Crear un archivo de exclusión estándar (.gitignore)
+touch .gitignore
