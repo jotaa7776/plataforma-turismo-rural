@@ -1,10 +1,21 @@
 # plataforma-turismo-rural
 Plataforma web para emprendimientos de turismo rural y comunitario.
 
-<<<<<<< HEAD
 Integrantes:
 Joaquín Navarro
 Benjamín Villarroel
 Frank Häfelin
-=======
->>>>>>> 771922ddb6a8aa99b740e5ef8b29db293739ee88
+
+Arquitectura:
+MVP
+
+Tecnologías:
+HTML
+CSS
+JAVASCRIPT
+REACT (por decidir)
+
+Organización:
+docs: Carpeta para la documentación del proyecto
+src: Carpeta donde se almacenará el código fuente
+test: Carpeta para la realización de pruebas
