@@ -4,7 +4,7 @@ Plataforma web desarrollada como parte del proyecto académico para la gestión 
 
 ---
 
-##¿De qué trata la página?
+#¿De qué trata la página?
 **Raíces Chile** es una plataforma web orientada al turismo rural y sostenible, diseñada para conectar a los viajeros con experiencias locales auténticas en distintas zonas del país. El sitio permite a los usuarios explorar destinos rurales, conocer ofertas de alojamiento o actividades comunitarias, y gestionar de forma segura sus cuentas e interacciones a través de un sistema moderno basado en autenticación web y bases de datos en la nube.
 
 ---
