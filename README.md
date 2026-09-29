@@ -1,6 +1,18 @@
-# 🌿 Plataforma de Turismo Rural - Raíces Chile
+## Plataforma de Turismo Rural - Raíces Chile
 
 Plataforma web desarrollada como parte del proyecto académico para la gestión y promoción del turismo rural, facilitando la conexión entre visitantes y experiencias locales auténticas.
+
+---
+
+##¿De qué trata la página?
+**Raíces Chile** es una plataforma web orientada al turismo rural y sostenible, diseñada para conectar a los viajeros con experiencias locales auténticas en distintas zonas del país. El sitio permite a los usuarios explorar destinos rurales, conocer ofertas de alojamiento o actividades comunitarias, y gestionar de forma segura sus cuentas e interacciones a través de un sistema moderno basado en autenticación web y bases de datos en la nube.
+
+---
+
+##Integrantes del Equipo
+* **Joaquín Navarro Álvarez** 
+* **Benjamín Villaroel** 
+* **Frank  Häfelin** 
 
 ---
 
@@ -17,6 +29,4 @@ Este sistema está diseñado para optimizar la experiencia de los usuarios inter
 
 ---
 
-## ⚙️ 3. Instalación y Ejecución Local
-Sigue estos pasos para levantar el proyecto en tu entorno local:
 
