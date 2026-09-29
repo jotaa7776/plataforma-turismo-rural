@@ -1,4 +1,4 @@
-## Plataforma de Turismo Rural - Raíces Chile
+## Plataforma de Turismo Rural 
 
 Plataforma web desarrollada como parte del proyecto académico para la gestión y promoción del turismo rural, facilitando la conexión entre visitantes y experiencias locales auténticas.
 
