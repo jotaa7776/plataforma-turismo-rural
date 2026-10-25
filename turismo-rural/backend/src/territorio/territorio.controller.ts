@@ -12,6 +12,7 @@ import { TerritorioService } from './territorio.service';
 export class TerritorioController {
   constructor(private s: TerritorioService) {}
 
+  @Get('destacadas') destacadas() { return this.s.destacadas(); }
   @Get('regiones') regiones() { return this.s.regiones(); }
   @Get() listar(@Query() f: FiltroLocalidadDto) { return this.s.listar(f); }
   @Get(':id') obtener(@Param('id', ParseUUIDPipe) id: string) { return this.s.obtener(id); }

@@ -2,6 +2,7 @@ export type Rol = 'visitante' | 'emprendedor' | 'administrador';
 export interface Usuario { id: string; nombre: string; correo: string; rol: Rol }
 export interface Imagen { id: string; url: string; descripcion?: string }
 export interface Region { nombre: string; comunas: string[] }
+export interface LocalidadDestacada { id: string; nombre: string; region: string; url: string | null; emprendimientos: number }
 export interface Sector { id: string; nombre: string; descripcion?: string }
 export interface Localidad {
   id: string; nombre: string; region: string; descripcion?: string;
@@ -22,7 +23,7 @@ export interface Ruta {
   emprendimiento?: Emprendimiento; imagenes?: Imagen[];
 }
 export interface Experiencia {
-  id: string; nombre: string; descripcion: string; tipo: 'actividad' | 'servicio' | 'excursion';
+  id: string; nombre: string; descripcion: string; tipo: 'actividad' | 'servicio' | 'alojamiento' | 'excursion';
   precio: number; capacidad: number; horarios?: string; emprendimientoId: string;
   emprendimiento?: Emprendimiento; ruta?: Ruta; imagenes?: Imagen[];
 }
@@ -31,6 +32,6 @@ export interface Pago {
 }
 export type EstadoReserva = 'pendiente' | 'aceptada' | 'rechazada' | 'cancelada';
 export interface Reserva {
-  id: string; fecha: string; hora: string; cantidadPersonas: number; estado: EstadoReserva; total: number;
+  id: string; fecha: string; hora: string; fechaSalida?: string | null; noches?: number | null; cantidadPersonas: number; estado: EstadoReserva; total: number;
   experiencia?: Experiencia; visitante?: Usuario; pago?: Pago | null;
 }

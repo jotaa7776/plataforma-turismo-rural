@@ -15,3 +15,7 @@ export function mensajeError(e: any): string {
 export const dinero = (n: number) =>
   new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 }).format(n);
 export const duracion = (min: number) => (min >= 60 ? `${Math.floor(min / 60)} h ${min % 60 ? (min % 60) + ' min' : ''}` : `${min} min`);
+
+/** Texto de cuándo es una reserva: "Del … al … (N noches)" en alojamientos, o fecha y hora en el resto. */
+export const cuando = (r: { fecha: string; hora: string; fechaSalida?: string | null; noches?: number | null }) =>
+  r.fechaSalida ? `Del ${r.fecha} al ${r.fechaSalida} (${r.noches} ${r.noches === 1 ? 'noche' : 'noches'})` : `${r.fecha} a las ${r.hora}`;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { api, dinero, mensajeError } from '../api';
+import { api, cuando, dinero, mensajeError } from '../api';
 import { Aviso, Datos } from '../components/common/Estado';
 import { useFetch } from '../hooks/useFetch';
 import { Reserva } from '../types';
@@ -33,7 +33,7 @@ export default function Pago() {
           <section className="pagado-caja" role="status">
             <h1>Pagado</h1>
             <p>Tu pago de <strong>{dinero(r.pago.monto)}</strong> fue recibido.</p>
-            <p className="suave">{r.experiencia?.nombre} · {r.fecha} a las {r.hora} · {r.cantidadPersonas} persona(s)</p>
+            <p className="suave">{r.experiencia?.nombre} · {cuando(r)} · {r.cantidadPersonas} persona(s)</p>
             <p className="suave">Referencia: {r.pago.referencia} · Medio: {medios.data?.find((m) => m.id === r.pago!.medioPago)?.nombre ?? r.pago.medioPago}</p>
             <p>El emprendedor ya puede ver tu reserva y la confirmará pronto.</p>
             <Link className="btn" to="/mis-reservas">Ver mis reservas</Link>
@@ -44,7 +44,7 @@ export default function Pago() {
             <p className="simulacion">Pasarela de pago simulada: no se cobra dinero real.</p>
             <div className="panel">
               <h3>{r.experiencia?.nombre}</h3>
-              <p style={{ margin: 0 }}>{r.fecha} a las {r.hora} · {r.cantidadPersonas} persona(s)</p>
+              <p style={{ margin: 0 }}>{cuando(r)} · {r.cantidadPersonas} persona(s)</p>
               <p style={{ margin: '.5rem 0 0' }}><strong>Total a pagar: {dinero(r.total)}</strong></p>
             </div>
 

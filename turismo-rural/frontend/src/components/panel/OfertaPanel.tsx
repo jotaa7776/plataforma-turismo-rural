@@ -72,14 +72,14 @@ export default function OfertaPanel({ emp }: { emp: Emprendimiento }) {
           <label>Nombre<input required value={e.nombre} onChange={(x) => setE({ ...e, nombre: x.target.value })} /></label>
           <label>Tipo
             <select value={e.tipo} onChange={(x) => setE({ ...e, tipo: x.target.value })}>
-              <option value="actividad">Actividad</option><option value="servicio">Servicio</option><option value="excursion">Excursión</option>
+              <option value="actividad">Actividad</option><option value="servicio">Servicio</option><option value="alojamiento">Alojamiento</option><option value="excursion">Excursión</option>
             </select>
           </label>
         </div>
         <label>Descripción<textarea required value={e.descripcion} onChange={(x) => setE({ ...e, descripcion: x.target.value })} /></label>
         <div className="fila">
-          <label>Precio por persona (CLP)<input type="number" min={0} required value={e.precio} onChange={(x) => setE({ ...e, precio: +x.target.value })} /></label>
-          <label>Cupo por horario<input type="number" min={1} required value={e.capacidad} onChange={(x) => setE({ ...e, capacidad: +x.target.value })} /></label>
+          <label>{e.tipo === 'alojamiento' ? 'Precio por persona por noche (CLP)' : 'Precio por persona (CLP)'}<input type="number" min={0} required value={e.precio} onChange={(x) => setE({ ...e, precio: +x.target.value })} /></label>
+          <label>{e.tipo === 'alojamiento' ? 'Personas que caben por noche' : 'Cupo por horario'}<input type="number" min={1} required value={e.capacidad} onChange={(x) => setE({ ...e, capacidad: +x.target.value })} /></label>
           <label>Horarios (ej. 09:00, 15:00)<input value={e.horarios} onChange={(x) => setE({ ...e, horarios: x.target.value })} /></label>
         </div>
         <label>Ruta asociada (opcional)

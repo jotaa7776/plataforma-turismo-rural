@@ -4,7 +4,7 @@ import { randomUUID } from 'crypto';
 import { mkdir, unlink } from 'fs/promises';
 import { join } from 'path';
 import sharp from 'sharp';
-import { FindOptionsWhere, Repository } from 'typeorm';
+import { FindOptionsWhere, In, Repository } from 'typeorm';
 import { UsuarioActual } from '../auth/auth.decorator';
 import { Emprendimiento, EstadoEmprendimiento } from '../emprendimientos/emprendimiento.entity';
 import {
@@ -25,6 +25,17 @@ export class OfertaService {
     @InjectRepository(Emprendimiento) private emprendimientos: Repository<Emprendimiento>,
   ) {}
 
+  /** Agrega las fotos del emprendimiento a cada resultado, para mostrarlas en la búsqueda. */
+  private async conFotosDelEmprendimiento<T extends { emprendimientoId: string; emprendimiento?: Emprendimiento }>(items: T[]) {
+    if (!items.length) return items;
+    const ids = [...new Set(items.map((i) => i.emprendimientoId))];
+    const fotos = await this.imagenes.find({ where: { emprendimientoId: In(ids) }, order: { fecha: 'DESC' } });
+    items.forEach((i) => {
+      if (i.emprendimiento) Object.assign(i.emprendimiento, { imagenes: fotos.filter((f) => f.emprendimientoId === i.emprendimientoId) });
+    });
+    return items;
+  }
+
   private filtroEmp(f: FiltroOfertaDto) {
     const emp: FindOptionsWhere<Emprendimiento> = { estado: EstadoEmprendimiento.APROBADO };
     if (f.localidadId) emp.localidadId = f.localidadId;
@@ -44,10 +55,10 @@ export class OfertaService {
   }
 
   // ---------- experiencias ----------
-  listarExperiencias(f: FiltroOfertaDto) {
+  async listarExperiencias(f: FiltroOfertaDto) {
     const where: FindOptionsWhere<Experiencia> = { emprendimiento: this.filtroEmp(f) };
     if (f.tipo) where.tipo = f.tipo;
-    return this.experiencias.find({ where, relations: REL_EXP, order: { nombre: 'ASC' } });
+    return this.conFotosDelEmprendimiento(await this.experiencias.find({ where, relations: REL_EXP, order: { nombre: 'ASC' } }));
   }
   misExperiencias(user: UsuarioActual) {
     return this.experiencias.find({ where: { emprendimiento: { propietarioId: user.id } }, relations: REL_EXP });
@@ -76,8 +87,10 @@ export class OfertaService {
   }
 
   // ---------- rutas ----------
-  listarRutas(f: FiltroOfertaDto) {
-    return this.rutas.find({ where: { emprendimiento: this.filtroEmp(f) }, relations: REL_RUTA, order: { nombre: 'ASC' } });
+  async listarRutas(f: FiltroOfertaDto) {
+    return this.conFotosDelEmprendimiento(
+      await this.rutas.find({ where: { emprendimiento: this.filtroEmp(f) }, relations: REL_RUTA, order: { nombre: 'ASC' } }),
+    );
   }
   misRutas(user: UsuarioActual) {
     return this.rutas.find({ where: { emprendimiento: { propietarioId: user.id } }, relations: REL_RUTA });

@@ -1,8 +1,8 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { numeric } from '../common/numeric.transformer';
 import { Emprendimiento } from '../emprendimientos/emprendimiento.entity';
 
-export enum TipoExperiencia { ACTIVIDAD = 'actividad', SERVICIO = 'servicio', EXCURSION = 'excursion' }
+export enum TipoExperiencia { ACTIVIDAD = 'actividad', SERVICIO = 'servicio', ALOJAMIENTO = 'alojamiento', EXCURSION = 'excursion' }
 export enum Dificultad { FACIL = 'facil', MEDIA = 'media', DIFICIL = 'dificil' }
 
 @Entity('rutas')
@@ -42,6 +42,7 @@ export class Experiencia {
 export class Imagen {
   @PrimaryGeneratedColumn('uuid') id: string;
   @Column() url: string;
+  @CreateDateColumn() fecha: Date;
   @Column({ type: 'varchar', nullable: true }) descripcion?: string;
   @Column({ type: 'varchar', nullable: true }) experienciaId?: string;
   @ManyToOne(() => Experiencia, (e) => e.imagenes, { nullable: true, onDelete: 'CASCADE' })

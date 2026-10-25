@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { api, dinero, mensajeError } from '../api';
+import { api, cuando, dinero, mensajeError } from '../api';
 import { Aviso, Datos, EstadoTag, PagoTag, Vacio } from '../components/common/Estado';
 import { useFetch } from '../hooks/useFetch';
 import { Emprendimiento, Reserva } from '../types';
@@ -64,7 +64,7 @@ function Reservas() {
             {data.map((r) => (
               <li key={r.id}>
                 <div className="acciones"><strong>{r.experiencia?.nombre}</strong><EstadoTag estado={r.estado} /><PagoTag pago={r.pago} /></div>
-                <p style={{ margin: 0 }}>{r.fecha} {r.hora} · {r.cantidadPersonas} persona(s) · {dinero(r.total)}</p>
+                <p style={{ margin: 0 }}>{cuando(r)} · {r.cantidadPersonas} persona(s) · {dinero(r.total)}</p>
                 <p className="suave" style={{ margin: 0 }}>{r.experiencia?.emprendimiento?.nombre} · Visitante: {r.visitante?.nombre}</p>
               </li>
             ))}

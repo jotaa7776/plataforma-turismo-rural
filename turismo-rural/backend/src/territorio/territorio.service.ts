@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FindOptionsWhere, Repository } from 'typeorm';
+import { DataSource, FindOptionsWhere, Repository } from 'typeorm';
 import { ActividadTradicional, InformacionCultural, Localidad, Sector } from './entities';
 import { REGIONES } from './chile';
 import {
@@ -14,7 +14,40 @@ export class TerritorioService {
     @InjectRepository(InformacionCultural) private info: Repository<InformacionCultural>,
     @InjectRepository(ActividadTradicional) private actividades: Repository<ActividadTradicional>,
     @InjectRepository(Sector) private sectores: Repository<Sector>,
+    private ds: DataSource,
   ) {}
+
+  /**
+   * Para el carrusel de la página principal: localidades que tienen al menos un emprendimiento aprobado,
+   * con la foto más reciente subida en ellas (del emprendimiento, de sus experiencias o de sus rutas).
+   * Se calcula en cada consulta, así que se actualiza apenas alguien sube una foto nueva.
+   */
+  async destacadas() {
+    const filas = await this.ds.query(`
+      WITH fotos AS (
+        SELECT i.url, i.fecha, e."localidadId" AS loc FROM imagenes i
+          JOIN emprendimientos e ON e.id = i."emprendimientoId" WHERE e.estado = 'aprobado'
+        UNION ALL
+        SELECT i.url, i.fecha, e."localidadId" FROM imagenes i
+          JOIN experiencias x ON x.id = i."experienciaId"
+          JOIN emprendimientos e ON e.id = x."emprendimientoId" WHERE e.estado = 'aprobado'
+        UNION ALL
+        SELECT i.url, i.fecha, e."localidadId" FROM imagenes i
+          JOIN rutas r ON r.id = i."rutaId"
+          JOIN emprendimientos e ON e.id = r."emprendimientoId" WHERE e.estado = 'aprobado'
+      )
+      SELECT l.id, l.nombre, l.region,
+        (SELECT f.url FROM fotos f WHERE f.loc = l.id ORDER BY f.fecha DESC LIMIT 1) AS url,
+        (SELECT MAX(f.fecha) FROM fotos f WHERE f.loc = l.id) AS ultima,
+        (SELECT COUNT(*) FROM emprendimientos e WHERE e."localidadId" = l.id AND e.estado = 'aprobado') AS emprendimientos
+      FROM localidades l
+      WHERE EXISTS (SELECT 1 FROM emprendimientos e WHERE e."localidadId" = l.id AND e.estado = 'aprobado')
+      ORDER BY ultima DESC NULLS LAST, l.nombre
+      LIMIT 12`);
+    return filas.map((f: any) => ({
+      id: f.id, nombre: f.nombre, region: f.region, url: f.url, emprendimientos: Number(f.emprendimientos),
+    }));
+  }
 
   regiones() {
     return REGIONES;

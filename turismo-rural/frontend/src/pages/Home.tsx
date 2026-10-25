@@ -1,6 +1,7 @@
 import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Datos, Vacio } from '../components/common/Estado';
+import CarruselLocalidades from '../components/common/CarruselLocalidades';
 import SelectorLocalidad from '../components/common/SelectorLocalidad';
 import TarjetaExperiencia from '../components/common/TarjetaExperiencia';
 import { useFetch } from '../hooks/useFetch';
@@ -30,6 +31,8 @@ export default function Home() {
           <button className="btn">Ver servicios</button>
         </form>
       </section>
+
+      <CarruselLocalidades />
 
       <h2>Localidades</h2>
       <Datos cargando={loc.cargando} error={loc.error}>

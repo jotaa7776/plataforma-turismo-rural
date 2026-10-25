@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { api, dinero, mensajeError } from '../../api';
+import { api, cuando, dinero, mensajeError } from '../../api';
 import { useFetch } from '../../hooks/useFetch';
 import { Reserva } from '../../types';
 import { Aviso, Datos, EstadoTag, PagoTag, Vacio } from '../common/Estado';
@@ -21,7 +21,7 @@ export default function ReservasEmprendedor() {
           {data.map((r) => (
             <li key={r.id}>
               <div className="acciones"><strong>{r.experiencia?.nombre}</strong><EstadoTag estado={r.estado} /><PagoTag pago={r.pago} /></div>
-              <p style={{ margin: 0 }}>{r.fecha} a las {r.hora} · {r.cantidadPersonas} persona(s) · {dinero(r.total)}</p>
+              <p style={{ margin: 0 }}>{cuando(r)} · {r.cantidadPersonas} persona(s) · {dinero(r.total)}</p>
               <p className="suave" style={{ margin: 0 }}>Visitante: {r.visitante?.nombre} ({r.visitante?.correo})</p>
               {r.estado === 'pendiente' && (
                 <div className="acciones">

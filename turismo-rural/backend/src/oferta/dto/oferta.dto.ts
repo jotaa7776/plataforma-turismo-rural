@@ -5,7 +5,7 @@ import { Dificultad, TipoExperiencia } from '../entities';
 export class CrearExperienciaDto {
   @IsString() @IsNotEmpty({ message: 'El nombre es obligatorio' }) nombre: string;
   @IsString() @IsNotEmpty({ message: 'La descripción es obligatoria' }) descripcion: string;
-  @IsEnum(TipoExperiencia, { message: 'El tipo debe ser actividad, servicio o excursion' }) tipo: TipoExperiencia;
+  @IsEnum(TipoExperiencia, { message: 'El tipo debe ser actividad, servicio, alojamiento o excursion' }) tipo: TipoExperiencia;
   @IsNumber({}, { message: 'El precio debe ser un número' }) @Min(0, { message: 'El precio no puede ser negativo' }) precio: number;
   @IsInt() @Min(1, { message: 'La capacidad debe ser al menos 1' }) capacidad: number;
   @IsOptional() @IsString() horarios?: string;
