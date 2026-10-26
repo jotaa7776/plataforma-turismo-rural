@@ -28,7 +28,7 @@ Se informa que **la plataforma ha sido completamente rediseñada y desarrollada 
 
 Bash
 npm install
-# o si utilizas bun:
+ o si utilizas bun:
 bun install
 **Configurar variables de entorno:**
 Crea un archivo .env en la raíz del proyecto y añade tus credenciales de conexión con Supabase.
@@ -37,5 +37,5 @@ Crea un archivo .env en la raíz del proyecto y añade tus credenciales de conex
 
 Bash
 npm run dev
-# o si utilizas bun:
+ o si utilizas bun:
 bun run dev
