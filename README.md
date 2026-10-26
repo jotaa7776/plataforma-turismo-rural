@@ -1,7 +1,7 @@
-Raíces Chile — Plataforma de Turismo Rural
+--Raíces Chile — Plataforma de Turismo Rural
 Plataforma web desarrollada para potenciar el turismo rural, conectar a visitantes con emprendedores locales, explorar experiencias, gestionar reservas y administrar la plataforma de forma ágil y segura.
 
-🛠️ Tecnologías Utilizadas
+--Tecnologías Utilizadas
 Frontend: React, TypeScript, Tailwind CSS, Vite.
 
 Backend y Base de Datos: Supabase (Autenticación Cloud, Base de Datos Relacional y Políticas de Seguridad RLS).
