@@ -24,16 +24,16 @@ Se informa que **la plataforma ha sido completamente rediseñada y desarrollada 
 1. **Clonar el repositorio:**
    ```bash
    git clone [https://github.com/jotaa7776/plataforma-turismo-rural.git](https://github.com/jotaa7776/plataforma-turismo-rural.git)
-**Instalar las dependencias:
+**Instalar las dependencias:**
 
 Bash
 npm install
 # o si utilizas bun:
 bun install
-**Configurar variables de entorno:
+**Configurar variables de entorno:**
 Crea un archivo .env en la raíz del proyecto y añade tus credenciales de conexión con Supabase.
 
-**Ejecutar el servidor de desarrollo:
+**Ejecutar el servidor de desarrollo:**
 
 Bash
 npm run dev
